@@ -20,12 +20,32 @@ info: Microsoft.Hosting.Lifetime[0]
 ```
 (ewentualnie, gdy aplikacja nadal się nie uruchamia, warto sprawdzić, czy port 5127 jest wolny)
 
-4. Udaj się do wskazanego w konsoli URL: `http://0.0.0.0:5127` - powinien być taki sam za każdym razem, ale warto się upewnić
+4. We wierszu poleceń (CMD) wykonaj komendę ipconfig i znajdź swój lokalny adres IPv4 w sieci
+```
+C:\Users\Kuba>ipconfig
+[...]
+Wireless LAN adapter Wi-Fi 2:
+
+   Connection-specific DNS Suffix  . :
+   Link-local IPv6 Address . . . . . :
+   >>> IPv4 Address. . . . . . . . . . . : 192.168.0.167
+   Subnet Mask . . . . . . . . . . . :
+   Default Gateway . . . . . . . . . :
+[...]
+```
+4. Udaj się do lokalnego adresu URL z portem wskazanym w konsoli TodoApi.exe: `http://192.168.0.167:5127` - powinien być taki sam za każdym razem, ale warto się upewnić
 
 ### LINUX
 1. Pobierz najnowszy release dla linuxa i rozpakuj
-2. (LINUX) Przejdź do rozpakowanego dla linuxa (np. `/mnt/c/users/pc/desktop/ToDoList-linux/linux`)
-3. (LINUX) Uruchom TodoApi
+2. Zainstaluj net-tools i wykonaj komendę ifconfig oraz zanotuj lokalny adres IPv4 (przykład w WSL: 172.26.50.185)
+```
+linux@DESKTOP-L9JDK7L:/mnt/c/users/pc/desktop/ToDoList/linux$ ifconfig
+eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        >>> inet 172.26.50.185 <<<  netmask 255.255.240.0  broadcast 172.26.63.255
+[...]
+```
+4. (LINUX) Przejdź do rozpakowanego dla linuxa (np. `/mnt/c/users/pc/desktop/ToDoList-linux/linux`)
+5. (LINUX) Uruchom TodoApi
 ```
 linux@DESKTOP-L9JDK7L:/mnt/c/users/pc/desktop/ToDoList-linux/linux$ ls -la | grep -i "todoapi"
 -rwxrwxrwx 1 root root    75208 Dec 30 09:55 TodoApi
@@ -47,7 +67,7 @@ info: Microsoft.Hosting.Lifetime[0]
 info: Microsoft.Hosting.Lifetime[0]
       Content root path: /mnt/c/users/pc/desktop/ToDoList-linux/linux
 ```
-4. Udaj się do wskazanego w konsoli URL: `http://0.0.0.0:5127` - powinien być taki sam za każdym razem, ale warto się upewnić
+6. Udaj się do zapisanego wcześniej adresu z portem wskazanym w konsoli: `http://172.26.50.185:5127` - powinien być taki sam za każdym razem, ale warto się upewnić
 
 # Instalacja oraz uruchomienie wersji deweloperskiej (WINDOWS)
 ### Wymagania wstępne
