@@ -1,9 +1,11 @@
 # Uruchomienie wersji zbudowanej (WINDOWS/LINUX)
+W obu paczkach znajduje się dużo plików, aby ułatwić uruchomienie. Instalacja dotnet nie jest dzięki temu wymagana.
+
 ### WINDOWS
-1. Pobierz najnowszy release i rozpakuj
-2. Udaj się do folderu ToDoList/windows i uruchom plik TodoApi.exe
+1. Pobierz najnowszy release dla windowsa i rozpakuj
+2. Przejdź do rozpakowanego folderu dla windowsa i uruchom plik TodoApi.exe
 ```
-C:\Users\PC\Desktop\ToDoList\windows>todoapi.exe
+C:\Users\PC\Desktop\ToDoList-windows\windows>todoapi.exe
 info: Microsoft.EntityFrameworkCore.Database.Command[20101]
       Executed DbCommand (5ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
       SELECT COUNT(*) FROM "sqlite_master" WHERE "type" = 'table' AND "rootpage" IS NOT NULL;
@@ -14,25 +16,25 @@ info: Microsoft.Hosting.Lifetime[0]
 info: Microsoft.Hosting.Lifetime[0]
       Hosting environment: Production
 info: Microsoft.Hosting.Lifetime[0]
-      Content root path: C:\Users\PC\Desktop\ToDoList\windows
+      Content root path: C:\Users\PC\Desktop\ToDoList-windows\windows
 ```
 (ewentualnie, gdy aplikacja nadal się nie uruchamia, warto sprawdzić, czy port 5127 jest wolny)
 
 4. Udaj się do wskazanego w konsoli URL: `http://0.0.0.0:5127` - powinien być taki sam za każdym razem, ale warto się upewnić
 
 ### LINUX
-1. Pobierz najnowszy release i rozpakuj
-2. (LINUX) Przejdź do katalogu dla linuxa (np. `/mnt/c/users/pc/desktop/ToDoList/linux`)
+1. Pobierz najnowszy release dla linuxa i rozpakuj
+2. (LINUX) Przejdź do rozpakowanego dla linuxa (np. `/mnt/c/users/pc/desktop/ToDoList-linux/linux`)
 3. (LINUX) Uruchom TodoApi
 ```
-linux@DESKTOP-L9JDK7L:/mnt/c/users/pc/desktop/ToDoList/linux$ ls -la | grep -i "todoapi"
+linux@DESKTOP-L9JDK7L:/mnt/c/users/pc/desktop/ToDoList-linux/linux$ ls -la | grep -i "todoapi"
 -rwxrwxrwx 1 root root    75208 Dec 30 09:55 TodoApi
 -rwxrwxrwx 1 root root    80814 Dec 30 09:55 TodoApi.deps.json
 -rwxrwxrwx 1 root root    28672 Dec 30 09:55 TodoApi.dll
 -rwxrwxrwx 1 root root    26400 Dec 30 09:55 TodoApi.pdb
 -rwxrwxrwx 1 root root      565 Dec 30 09:55 TodoApi.runtimeconfig.json
 -rwxrwxrwx 1 root root   285031 Dec 30 09:33 TodoApi.staticwebassets.endpoints.json
-linux@DESKTOP-L9JDK7L:/mnt/c/users/pc/desktop/ToDoList/linux$ ./TodoApi
+linux@DESKTOP-L9JDK7L:/mnt/c/users/pc/desktop/ToDoList-linux/linux$ ./TodoApi
 info: Microsoft.EntityFrameworkCore.Database.Command[20101]
       Executed DbCommand (14ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
       SELECT COUNT(*) FROM "sqlite_master" WHERE "type" = 'table' AND "rootpage" IS NOT NULL;
@@ -43,7 +45,7 @@ info: Microsoft.Hosting.Lifetime[0]
 info: Microsoft.Hosting.Lifetime[0]
       Hosting environment: Production
 info: Microsoft.Hosting.Lifetime[0]
-      Content root path: /mnt/c/users/pc/desktop/ToDoList/linux
+      Content root path: /mnt/c/users/pc/desktop/ToDoList-linux/linux
 ```
 4. Udaj się do wskazanego w konsoli URL: `http://0.0.0.0:5127` - powinien być taki sam za każdym razem, ale warto się upewnić
 
