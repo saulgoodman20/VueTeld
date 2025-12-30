@@ -125,4 +125,4 @@ info: Microsoft.Hosting.Lifetime[0]
 info: Microsoft.Hosting.Lifetime[0]
       Content root path: C:\Users\PC\VueTeld\TodoApi
 ```
-3. Udaj się do URL: `localhost:5127` lub `http://lokalny_adres_ipv4:5127` - port powinien być taki sam za każdym razem, ale warto się upewnić
+3. Udaj się do URL: `localhost:5173` lub `http://lokalny_adres_ipv4:5173` - port powinien być taki sam za każdym razem, ale warto się upewnić (skorzystaj z portu Vite)
