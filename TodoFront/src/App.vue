@@ -237,7 +237,7 @@ onMounted(() => {
     <v-main>
       <v-container max-width="700">
         <!-- UPCOMING TASKS -->
-        <v-list v-if="upcomingTasksVisible" class="my-4 py-4 d-flex flex-column position-relative">
+        <v-list v-if="upcomingTasksVisible && upcomingTasks.length > 0" class="my-4 py-4 d-flex flex-column position-relative">
 
           <v-btn
           icon="mdi-close"
@@ -314,7 +314,7 @@ onMounted(() => {
           </v-list-item>
 
           <v-list-item v-if="!filterTasksByDate.length && !loading">
-            <v-list-item-title class="pa-2">No tasks found.</v-list-item-title>
+            <v-list-item-title class="pa-2">Brak zadań.</v-list-item-title>
           </v-list-item>
         </v-list>
       </v-container>
