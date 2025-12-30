@@ -1,28 +1,14 @@
-# Wymagania wstępne
-1. dotnet w wersji minimum 9.0.11
-2. node.js i npm
-```
-C:\Users\PC>dotnet --version
-9.0.302
-
-C:\Users\PC>node -v
-v22.14.0
-
-C:\Users\PC>npm -v
-10.9.2
-```
-
 # Uruchomienie wersji zbudowanej
+### Wymagania wstępne
+- dotnet w wersji minimum 9.0.11
+- aspnetcore w wersji minimum 9.0.0
+
 1. Pobierz najnowszy release
-2. Upewnij się, że masz zainstalowany dotnet w wersji 9.0.11
-```
-CMD:
-C:\Users\PC>dotnet --version
-9.0.302
-```
-2a. Jeżeli nie masz wersji przynajmniej 9.0.11, aplikacja może się nie uruchomić. W takim przypadku należy pobrać i zainstalować tą wersję:
+2. Jeśli nie masz, zainstaluj dotnet w wersji 9.0.11 oraz aspnetcore w wersji 9.0.11, w przeciwnym wypadku aplikacja może się nie uruchomić
 
 https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/runtime-9.0.11-windows-x64-installer?cid=getdotnetcore
+
+https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/runtime-aspnetcore-9.0.11-windows-x64-installer
 
 3. Po ukończonej pomyślnie weryfikacji, udaj się do folderu ToDoList i uruchom plik TodoApi.exe
 ```
@@ -44,6 +30,13 @@ info: Microsoft.Hosting.Lifetime[0]
 4. Udaj się do wskazanego w konsoli URL: `http://0.0.0.0:5127` - powinien być taki sam za każdym razem, ale warto się upewnić
 
 # Instalacja oraz uruchomienie wersji deweloperskiej
+### Wymagania wstępne
+- dotnet w wersji minimum 9.0.11
+- .NET sdk w wersji 9.0.302 (https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/sdk-9.0.308-windows-x64-installer)
+- aspnetcore w wersji minimum 9.0.0
+- node.js w wersji minimum 20.12
+- npm
+
 1. Sklonuj repozytorium do folderu lokalnego `git clone https://github.com/saulgoodman20/VueTeld.git`
 2. W folderze docelowym (np. `C:/Users/PC/VueTeld/`) uruchom 2 terminale powershell/cmd oraz wykonaj następujące komendy:
 
