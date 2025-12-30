@@ -45,8 +45,8 @@ eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
         >>> inet 172.26.50.185 <<<  netmask 255.255.240.0  broadcast 172.26.63.255
 [...]
 ```
-4. (LINUX) Przejdź do rozpakowanego dla linuxa (np. `/mnt/c/users/pc/desktop/ToDoList-linux/linux`)
-5. (LINUX) Uruchom TodoApi
+4. Przejdź do rozpakowanego dla linuxa (np. `/mnt/c/users/pc/desktop/ToDoList-linux/linux`)
+5. Uruchom TodoApi
 ```
 linux@DESKTOP-L9JDK7L:/mnt/c/users/pc/desktop/ToDoList-linux/linux$ ls -la | grep -i "todoapi"
 -rwxrwxrwx 1 root root    75208 Dec 30 09:55 TodoApi
