@@ -1,18 +1,9 @@
-# Uruchomienie wersji zbudowanej
-### Wymagania wstępne
-- dotnet w wersji minimum 9.0.11
-- aspnetcore w wersji minimum 9.0.0
-
-1. Pobierz najnowszy release
-2. Jeśli nie masz, zainstaluj dotnet w wersji 9.0.11 oraz aspnetcore w wersji 9.0.11, w przeciwnym wypadku aplikacja może się nie uruchomić
-
-https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/runtime-9.0.11-windows-x64-installer?cid=getdotnetcore
-
-https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/runtime-aspnetcore-9.0.11-windows-x64-installer
-
-3. Po ukończonej pomyślnie weryfikacji, udaj się do folderu ToDoList i uruchom plik TodoApi.exe
+# Uruchomienie wersji zbudowanej (WINDOWS/LINUX)
+### WINDOWS
+1. Pobierz najnowszy release i rozpakuj
+2. Udaj się do folderu ToDoList/windows i uruchom plik TodoApi.exe
 ```
-C:\Users\PC\Desktop\ToDoList>todoapi.exe
+C:\Users\PC\Desktop\ToDoList\windows>todoapi.exe
 info: Microsoft.EntityFrameworkCore.Database.Command[20101]
       Executed DbCommand (5ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
       SELECT COUNT(*) FROM "sqlite_master" WHERE "type" = 'table' AND "rootpage" IS NOT NULL;
@@ -23,13 +14,40 @@ info: Microsoft.Hosting.Lifetime[0]
 info: Microsoft.Hosting.Lifetime[0]
       Hosting environment: Production
 info: Microsoft.Hosting.Lifetime[0]
-      Content root path: C:\Users\PC\Desktop\ToDoList
+      Content root path: C:\Users\PC\Desktop\ToDoList\windows
 ```
 (ewentualnie, gdy aplikacja nadal się nie uruchamia, warto sprawdzić, czy port 5127 jest wolny)
 
 4. Udaj się do wskazanego w konsoli URL: `http://0.0.0.0:5127` - powinien być taki sam za każdym razem, ale warto się upewnić
 
-# Instalacja oraz uruchomienie wersji deweloperskiej
+### LINUX
+1. Pobierz najnowszy release i rozpakuj
+2. (LINUX) Przejdź do katalogu dla linuxa (np. `/mnt/c/users/pc/desktop/ToDoList/linux`)
+3. (LINUX) Uruchom TodoApi
+```
+linux@DESKTOP-L9JDK7L:/mnt/c/users/pc/desktop/ToDoList/linux$ ls -la | grep -i "todoapi"
+-rwxrwxrwx 1 root root    75208 Dec 30 09:55 TodoApi
+-rwxrwxrwx 1 root root    80814 Dec 30 09:55 TodoApi.deps.json
+-rwxrwxrwx 1 root root    28672 Dec 30 09:55 TodoApi.dll
+-rwxrwxrwx 1 root root    26400 Dec 30 09:55 TodoApi.pdb
+-rwxrwxrwx 1 root root      565 Dec 30 09:55 TodoApi.runtimeconfig.json
+-rwxrwxrwx 1 root root   285031 Dec 30 09:33 TodoApi.staticwebassets.endpoints.json
+linux@DESKTOP-L9JDK7L:/mnt/c/users/pc/desktop/ToDoList/linux$ ./TodoApi
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (14ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT COUNT(*) FROM "sqlite_master" WHERE "type" = 'table' AND "rootpage" IS NOT NULL;
+info: Microsoft.Hosting.Lifetime[14]
+      Now listening on: http://0.0.0.0:5127
+info: Microsoft.Hosting.Lifetime[0]
+      Application started. Press Ctrl+C to shut down.
+info: Microsoft.Hosting.Lifetime[0]
+      Hosting environment: Production
+info: Microsoft.Hosting.Lifetime[0]
+      Content root path: /mnt/c/users/pc/desktop/ToDoList/linux
+```
+4. Udaj się do wskazanego w konsoli URL: `http://0.0.0.0:5127` - powinien być taki sam za każdym razem, ale warto się upewnić
+
+# Instalacja oraz uruchomienie wersji deweloperskiej (WINDOWS)
 ### Wymagania wstępne
 - dotnet w wersji minimum 9.0.11
 - .NET sdk w wersji 9.0.302 (https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/sdk-9.0.308-windows-x64-installer)
