@@ -39,6 +39,7 @@ Wireless LAN adapter Wi-Fi 2:
 1. Pobierz najnowszy release dla linuxa i rozpakuj
 2. Zainstaluj net-tools i wykonaj komendę ifconfig oraz zanotuj lokalny adres IPv4 (przykład w WSL: 172.26.50.185)
 ```
+linux@DESKTOP-L9JDK7L:/mnt/c/users/pc/desktop/ToDoList/linux$ sudo apt install net-tools
 linux@DESKTOP-L9JDK7L:/mnt/c/users/pc/desktop/ToDoList/linux$ ifconfig
 eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
         >>> inet 172.26.50.185 <<<  netmask 255.255.240.0  broadcast 172.26.63.255
