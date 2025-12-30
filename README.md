@@ -22,7 +22,7 @@ info: Microsoft.Hosting.Lifetime[0]
 
 4. We wierszu poleceń (CMD) wykonaj komendę ipconfig i znajdź swój lokalny adres IPv4 w sieci
 ```
-C:\Users\Kuba>ipconfig
+C:\Users\PC>ipconfig
 [...]
 Wireless LAN adapter Wi-Fi 2:
 
