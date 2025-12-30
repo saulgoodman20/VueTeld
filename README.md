@@ -33,7 +33,7 @@ Wireless LAN adapter Wi-Fi 2:
    Default Gateway . . . . . . . . . :
 [...]
 ```
-4. Udaj się do lokalnego adresu URL z portem wskazanym w konsoli TodoApi.exe: `http://192.168.0.167:5127` - powinien być taki sam za każdym razem, ale warto się upewnić
+4. Udaj się do lokalnego adresu URL z portem wskazanym w konsoli TodoApi.exe: `http://192.168.0.167:5127` lub `localhost:5127` - port powinien być taki sam za każdym razem, ale warto się upewnić
 
 ### LINUX
 1. Pobierz najnowszy release dla linuxa i rozpakuj
@@ -68,7 +68,7 @@ info: Microsoft.Hosting.Lifetime[0]
 info: Microsoft.Hosting.Lifetime[0]
       Content root path: /mnt/c/users/pc/desktop/ToDoList-linux/linux
 ```
-6. Udaj się do zapisanego wcześniej adresu z portem wskazanym w konsoli: `http://172.26.50.185:5127` - powinien być taki sam za każdym razem, ale warto się upewnić
+6. Udaj się do zapisanego wcześniej adresu z portem wskazanym w konsoli: `http://172.26.50.185:5127` lub `localhost:5127` - port powinien być taki sam za każdym razem, ale warto się upewnić
 
 # Instalacja oraz uruchomienie wersji deweloperskiej (WINDOWS)
 ### Wymagania wstępne
