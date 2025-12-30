@@ -21,6 +21,9 @@ const isAddTaskFormVisible = ref(false);
 const isEditingTask = ref(false);
 const editingTaskId = ref(null);
 
+// UPCOMING TASKS
+const upcomingTasksVisible = ref(true);
+
 // FILTERS
 const selectedDate = ref('');
 
@@ -32,6 +35,20 @@ const filterTasksByDate = computed(() => {
   return tasks.value.filter(task => {
     if (!task.todoItemDueDate) return false;
     return task.todoItemDueDate.slice(0, 10) === selectedDate.value;
+  });
+});
+
+// FILTER TASKS BY UPCOMING (TODAY AND TOMORROW)
+const upcomingTasks = computed(() => {
+  const today = new Date();
+  const tomorrow = new Date();
+  tomorrow.setDate(today.getDate() + 1);
+
+  return tasks.value.filter(task => {
+    if (!task.todoItemDueDate) return false;
+    if (task.todoItemIsDone) return false;
+    const taskDate = new Date(task.todoItemDueDate);
+    return taskDate.toDateString() === today.toDateString() || taskDate.toDateString() === tomorrow.toDateString();
   });
 });
 
@@ -185,6 +202,22 @@ async function handleSubmit(){
     return
   }
 
+  if (newDescription.value.length > 500){
+    error.value = 'Opis zadania nie może przekraczać 500 znaków.';
+    return
+  }
+
+  if (newDueDate.value){
+    const today = new Date();
+    const dueDate = new Date(newDueDate.value);
+    today.setHours(0,0,0,0);
+    dueDate.setHours(0,0,0,0);
+    if (dueDate < today){
+      error.value = 'Data terminu nie może być z przeszłości.';
+      return
+    }
+  }
+
     if (isEditingTask.value && editingTaskId.value != null){
       await editTask(editingTaskId.value, newTitle.value, newDescription.value, isTaskCompleted.value, newDueDate.value)
     }else{
@@ -201,32 +234,69 @@ onMounted(() => {
 
 <template>
   <v-app>
-    <v-main class="d-flex justify-center align-center">
-      <v-container>
-          <v-text-field
-            v-model="selectedDate"
-            label="Pokaż zadania z terminem do"
-            type="date"
-            class="mb-4">
-          </v-text-field>
+    <v-main>
+      <v-container max-width="700">
+        <!-- UPCOMING TASKS -->
+        <v-list v-if="upcomingTasksVisible" class="my-4 py-4 d-flex flex-column position-relative">
 
-        <v-list>
-          <v-list-item v-for="task in filterTasksByDate" :key="task.todoItemId" class="my-8">
-            <!-- <v-list-item-title class="pa-2 font-weight-bold">
-              ID: {{ task.todoItemId }}
-            </v-list-item-title> -->
+          <v-btn
+          icon="mdi-close"
+          size="small"
+          variant="text"
+          class="close-x-btn"
+          @click="upcomingTasksVisible = false"
+          />
 
+          <div class="d-flex align-center justify-center">
+            <v-icon left class="text-h5 mr-2">mdi-calendar-clock</v-icon>
+            <h1 class="text-h5">
+              Wkrótce kończące się zadania
+            </h1>
+          </div>
+
+          <v-list-item v-for="task in upcomingTasks" :key="task.todoItemId" class="my-8 bg-grey-darken-3">
             <v-list-item-title class="pa-2 text-h5">
               <v-icon left v-if="task.todoItemIsDone">mdi-checkbox-marked-circle-outline</v-icon>
               <b>{{ task.todoItemTitle }}</b>
             </v-list-item-title>
+            <v-list-item-subtitle class="pa-2">
+              <b>Status:</b> <span :class="task.todoItemIsDone ? 'text-green' : 'text-red'">{{ task.todoItemIsDone ? 'Zakończono' : 'W trakcie' }}</span>
+            </v-list-item-subtitle>
+            <v-list-item-subtitle class="pa-2">
+              <b>Termin:</b> {{ task.todoItemDueDate ? new Date(task.todoItemDueDate).toLocaleDateString() : 'Brak' }}
+            </v-list-item-subtitle>
+          </v-list-item>
 
-            <div class="pa-2 text-medium-emphasis" style="white-space: pre-wrap; line-height: 1.4;">
+          <v-list-item v-if="!upcomingTasks.length && !loading">
+            <v-list-item-title class="pa-2">Brak wkrótce kończących się zadań (poniżej 2 dni).</v-list-item-title>
+          </v-list-item>
+        </v-list>
+
+          <v-text-field
+            v-model="selectedDate"
+            label="Pokaż zadania z terminem do"
+            type="date">
+          </v-text-field>
+
+        <!-- ALL TASKS -->
+        <v-list max-height="600">
+          <v-list-item v-for="task in filterTasksByDate" :key="task.todoItemId">
+            <!-- <v-list-item-title class="pa-2 font-weight-bold">
+              ID: {{ task.todoItemId }}
+            </v-list-item-title> -->
+
+            <v-list-item-title class="d-flex text-wrap pa-2 ga-4 text-h5 my-4">
+              <v-icon left v-if="task.todoItemIsDone" class="text-green">mdi-checkbox-marked-circle-outline</v-icon>
+              <v-icon left v-else class="text-gray-darken-2">mdi-checkbox-blank-circle-outline</v-icon>
+              <b>{{ task.todoItemTitle }}</b>
+            </v-list-item-title>
+
+            <div class="pa-2 text-medium-emphasis description-wrap">
               {{ task.todoItemDescription }}
             </div>
 
             <v-list-item-subtitle class="pa-2">
-              <b>Status:</b> {{ task.todoItemIsDone ? 'Zakończono' : 'W trakcie' }}
+              <b>Status:</b> <span :class="task.todoItemIsDone ? 'text-green' : 'text-red'">{{ task.todoItemIsDone ? 'Zakończono' : 'W trakcie' }}</span>
             </v-list-item-subtitle>
             <v-list-item-subtitle class="pa-2">
               <b>Termin:</b> {{ task.todoItemDueDate ? new Date(task.todoItemDueDate).toLocaleDateString() : 'Brak' }}
@@ -249,7 +319,7 @@ onMounted(() => {
         </v-list>
       </v-container>
 
-      <v-container>
+      <v-container max-width="700">
         <p v-if="error" class="text-error my-4 mx-2">Błąd: {{ error }}</p>
         <v-btn color="gray" @click="toggleTaskEditAdd(!isAddTaskFormVisible)" class="mb-4">
           {{ isAddTaskFormVisible ? 'Anuluj' : '+ Nowe zadanie' }}
@@ -263,7 +333,7 @@ onMounted(() => {
 
           <v-textarea
             v-model="newDescription"
-            label="Opis zadania"
+            label="Opis zadania (max 500 znaków)"
             rows="3"
             auto-grow
           ></v-textarea>
@@ -290,3 +360,21 @@ onMounted(() => {
     </v-main>
   </v-app>
 </template>
+
+<style scoped>
+.description-wrap {
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
+  word-wrap: break-word;
+}
+
+.close-x-btn {
+  position: absolute !important;
+  top: 25px;
+  right: 25px;
+  transform: translate(50%, -50%);
+  background-color: rgba(0, 0, 0, 0);
+  backdrop-filter: blur(5px);
+}
+</style>
